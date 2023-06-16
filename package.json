@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "description": "Chrome Extension for Spotify website to view friend listening activity",
   "scripts": {
-    "build:linux": "rm -rf ./dist && webpack && npm run copy:distlinux && zip -r dist.zip dist",
+    "build:linux": "rm -rf ./dist && webpack && npm run copy:dist:linux && zip -r dist.zip dist",
     "copy:dist:linux": "cp ./src/components/Popup/popup.html manifest.json ./dist",
     "build:win": "rmdir /s /q dist & npm run copy:dist:win & webpack & powershell Compress-Archive -Force -Path ./dist -DestinationPath dist.zip",
     "copy:dist:win": "if not exist dist mkdir dist & copy \".\\src\\components\\Popup\\popup.html\" dist & copy manifest.json dist"
