@@ -1,0 +1,280 @@
+// import /src/styles/_globals.scss.
+@import "/src/styles/globals";
+
+// Spotify's class naming convention for a buddy-feed.
+.buddy-feed {
+  grid-area: right-sidebar;
+  background-color: #121212;
+  border-radius: 8px;
+  border-image-outset: 0;
+  border-image-repeat: stretch;
+  border-image-slice: 100%;
+  border-image-source: none;
+  border-image-width: 1;
+  border-color: #b3b3b3;
+  border-style: none;
+  border-width: 0px;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  box-sizing: border-box;
+  color: #b3b3b3;
+  margin: 0px;
+  padding: 0px;
+  text-transform: none;
+  -webkit-box-direction: normal;
+  -webkit-font-smoothing: antialiased;
+  width: 270px;
+  min-height: 0;
+
+  // Insure the buddy feed's height stays within the bounds of the main grid if it overflows.
+  min-height: 0;
+
+  // Spotify's left nav bar has z-index: 4 as well.
+  z-index: 4;
+
+  .friend-activity-container {
+    height: 100%;
+
+    padding: 1rem 0 1rem 1rem;
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      margin: 0 1rem 2rem 0;
+
+      h1 {
+        font-size: 1rem;
+
+        color: var(--text-base, #fff);
+
+        user-select: none;
+      }
+
+      // Refresh button.
+      .refresh {
+        display: flex;
+        opacity: 0.8;
+
+        padding: 0.125rem;
+        cursor: pointer;
+
+        &:hover {
+          opacity: 1;
+          transform: rotate(180deg);
+          transition-duration: 0.6s;
+        }
+      }
+    }
+
+    .friends-list {
+      // Make friend list scrollable when it overflows.
+      overflow-y: auto;
+
+      height: 90%;
+
+      // Loading spinner container.
+      .loader-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .loader {
+          width: 2.5rem;
+          height: 2.5rem;
+
+          border: 0.25rem solid var(--essential-subdued, #727272);
+          border-radius: 50%;
+          border-top: 0.25rem solid var(--essential-positive, #1ed760);
+
+          animation: spin 1.5s linear infinite;
+        }
+
+        // Loading spinner keyframes. (For the animation)
+        @keyframes spin {
+          0% {
+            transform: rotate(0deg);
+          }
+
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      }
+
+      .friend {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+
+        &:not(:last-of-type) {
+          margin-bottom: 1.875rem;
+        }
+
+        .user-icon-container {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          margin-top: 0.25rem;
+
+          user-select: none;
+          cursor: pointer;
+
+          // Show play icon over user icon on hover.
+          &:hover {
+            & .user-play-icon {
+              width: 0.75rem;
+              height: 0.75rem;
+
+              display: inline;
+
+              position: absolute;
+
+              box-sizing: border-box;
+              border-style: solid;
+              border-width: 0.375rem 0 0.375rem 0.75rem;
+              border-color: transparent transparent transparent var(--text-base, #fff);
+            }
+
+            & .user-icon {
+              opacity: 0.5;
+            }
+          }
+
+          .user-icon {
+            border-radius: 50%;
+          }
+
+          .user-play-icon {
+            display: none;
+          }
+        }
+
+        // Badge over user icon to indicate online status.
+        .online-badge-container {
+          width: 0;
+          height: 0;
+
+          position: relative;
+
+          .online-badge {
+            background-color: var(--online-badge, #2e77d0);
+
+            width: 0.5rem;
+            height: 0.5rem;
+
+            position: absolute;
+            left: -0.5rem;
+            top: 0.375rem;
+
+            border-radius: 50%;
+          }
+        }
+
+        .friend-info {
+          width: 100%;
+
+          margin: 0 1rem 0 0.625rem;
+
+          .username-and-time {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .username {
+              max-width: 145px;
+
+              font-size: 0.875rem;
+              font-weight: 700;
+
+              cursor: pointer;
+
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+
+              color: var(--text-gray, #b3b3b3);
+
+              &:hover {
+                color: var(--text-base, #fff);
+              }
+            }
+
+            .time {
+              font-size: 0.75rem;
+
+              cursor: default;
+            }
+          }
+
+          .track-and-artist {
+            max-width: 178px;
+
+            display: flex;
+            align-items: center;
+
+            font-size: 0.75rem;
+
+            .track-info {
+              display: inline-block;
+
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+
+              color: var(--text-gray, #b3b3b3);
+
+              cursor: pointer;
+
+              &:hover {
+                color: var(--text-base, #fff);
+              }
+            }
+
+            .bullet-separator {
+              color: var(--text-base, #fff);
+
+              white-space: pre;
+
+              cursor: default;
+            }
+          }
+
+          .context-container {
+            display: flex;
+            align-items: center;
+
+            color: var(--text-gray, #b3b3b3);
+            font-size: 0.75rem;
+
+            cursor: pointer;
+
+            &:hover {
+              color: var(--text-base, #fff);
+            }
+
+            .context-name {
+              max-width: 160px;
+
+              display: inline-block;
+
+              margin-left: 0.375rem;
+
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+          }
+        }
+      }
+    }
+
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+  }
+}

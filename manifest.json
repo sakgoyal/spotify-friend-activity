@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Spotify Friends Panel",
+  "version": "2.0.0",
+  "action": {
+    "default_icon": {
+      "16": "images/sfa16.png",
+      "24": "images/sfa24.png",
+      "32": "images/sfa32.png"
+    },
+    "default_title": "Spotify Friends Panel",
+    "default_popup": "popup.html"
+  },
+  "description": "View your friends listening activity on the Spotify web app",
+  "icons": {
+    "16": "images/sfa16.png",
+    "48": "images/sfa48.png",
+    "128": "images/sfa128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://open.spotify.com/*"],
+      "js": ["index.js"]
+    }
+  ],
+  "host_permissions": ["https://open.spotify.com/*"],
+  "permissions": ["storage"]
+}

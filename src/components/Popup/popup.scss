@@ -1,0 +1,150 @@
+// import /src/styles/_globals.scss.
+@import "/src/styles/globals";
+
+body {
+  background-color: var(--background-base, #121212);
+
+  min-width: 25rem;
+
+  margin: 0;
+
+  color: var(--text-base, #fff);
+
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 16px;
+
+  #popup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 0 1.25rem 1.25rem;
+
+    h1 {
+      color: var(--essential-positive, #1ed760);
+
+      font-size: 1.8rem;
+
+      text-align: center;
+    }
+
+    // Toggle switch.
+    .switch {
+      font-size: 14px;
+
+      width: 30px;
+      height: 17px;
+
+      display: inline-block;
+
+      position: relative;
+      right: 76px;
+
+      margin: 30px 0;
+
+      #friend-activity-toggle {
+        display: none;
+
+        &:checked+.slider {
+          background-color: var(--essential-positive, #1ed760);
+
+          &:before {
+            background-color: var(--text-base, #fff);
+
+            transform: translateX(13px);
+          }
+        }
+      }
+
+      .slider {
+        background-color: var(--essential-subdued, #727272);
+
+        position: absolute;
+        left: 0;
+        right: 0;
+
+        cursor: pointer;
+
+        transition: 0.4s;
+        border-radius: 34px;
+
+        &:before {
+          background-color: var(--text-base, #fff);
+
+          width: 13px;
+          height: 13px;
+
+          position: absolute;
+          left: 2px;
+          bottom: 2px;
+
+          content: "";
+
+          transition: 0.4s;
+          border-radius: 50%;
+        }
+
+        .switch-label {
+          padding-left: 40px;
+          white-space: nowrap;
+        }
+      }
+    }
+
+    hr {
+      width: 95%;
+    }
+
+    // GitHub Issue links.
+    .issue-links {
+      display: grid;
+      grid-auto-flow: column;
+      grid-template-columns: 1fr auto 1fr;
+
+      width: 100%;
+
+      font-size: 0.75rem;
+
+      p {
+        white-space: pre;
+      }
+
+      a {
+        display: flex;
+        align-items: center;
+
+        color: var(--essential-positive, #1ed760);
+
+        &:first-of-type {
+          justify-content: flex-end;
+        }
+
+        &:last-of-type {
+          justify-content: flex-start;
+        }
+      }
+    }
+
+    // Bottom icons.
+    .footer-icons-container {
+      display: flex;
+
+      margin-top: 0.75rem;
+
+      a {
+        display: flex;
+        align-items: center;
+
+        &:not(:first-of-type) {
+          margin-left: 0.25rem;
+        }
+
+        &:not(:last-of-type) {
+          margin-right: 0.25rem;
+        }
+      }
+    }
+  }
+}
