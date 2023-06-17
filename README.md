@@ -2,9 +2,9 @@
 
 Google Chrome Extension to view your friends' activity in Spotify's web player.
 
-## Add to Chrome (latest release)
+<!-- ## Add to Chrome (latest release)
 
-Add the extension to your browser from the [Chrome Web Store](https://chrome.google.com/webstore/detail/spotify-friend-activity/amlnlcdighbhfciijpnofbpphfnkmeaa).
+Add the extension to your browser from the [Chrome Web Store](https://chrome.google.com/webstore/detail/spotify-friend-activity/amlnlcdighbhfciijpnofbpphfnkmeaa). -->
 
 ## Or build it yourself (latest dev build)
 

@@ -1,9 +1,5 @@
-// Needed for async/await.
-import "regenerator-runtime/runtime";
-
+import "regenerator-runtime/runtime"; // Needed for async/await.
 import { render } from "preact";
-
-// The column that displays your Spotify friends' activity.
 import { FriendActivity } from "./components/FriendActivity";
 
 /**
@@ -12,8 +8,7 @@ import { FriendActivity } from "./components/FriendActivity";
  * @param {bool} toggleOn Whether to toggle the FriendActivity on or off.
  */
 const toggleFriendActivity = async (toggleOn) => {
-  // Wait for the .main-view-container div (an existing Spotify DOM element) to render.
-  const mainView = await waitUntilRender(".main-view-container");
+  const mainView = await waitUntilRender(".main-view-container"); // Wait for an existing Spotify DOM element to render.
   const mainViewParent = mainView.parentElement;
   const mainWindow = mainViewParent.parentElement;
 
@@ -21,13 +16,10 @@ const toggleFriendActivity = async (toggleOn) => {
   if (toggleOn) {
     const buddyFeed = document.createElement("div");
     buddyFeed.classList.add("buddy-feed");
-
     mainWindow.insertBefore(buddyFeed, mainViewParent); // Insert buddyFeed before mainViewParent.
-
     mainViewParent.setAttribute("style", "grid-area: main-view/main-view/main-view;");
-
     render(<FriendActivity />, buddyFeed); // Inject FriendActivity into buddyFeed.
-
+    
   } else { // Else FriendActivity needs to toggle off.
     const buddyFeed = document.getElementsByClassName("buddy-feed")[0];
     if (buddyFeed) {
