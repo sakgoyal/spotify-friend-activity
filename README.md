@@ -17,12 +17,11 @@ Add the extension to your browser from the [Chrome Web Store](https://chrome.goo
 ### 2. Project Setup
 
 1. Run `git clone https://github.com/sakgoyal/spotify-friend-activity.git`
-
 2. Run `cd spotify-friend-activity`
-
 3. Run `npm install`
-
-4. Run `npm run build`
+4. Build the extension:
+   - Run `npm run build:linux` (Linux only)
+   - Run `npm run build:win` (Windows only)
 
 ### 3. Chrome Setup
 

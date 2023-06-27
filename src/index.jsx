@@ -1,6 +1,6 @@
 import "regenerator-runtime/runtime"; // Needed for async/await.
 import { render } from "preact";
-import { FriendActivity } from "./components/FriendActivity";
+import { FriendActivity, getWebAccessToken, getFriendActivity } from "./components/FriendActivity";
 
 /**
  * Toggles the FriendActivity component on or off depending on toggleOn.
@@ -12,6 +12,26 @@ const toggleFriendActivity = async (toggleOn) => {
   const mainViewParent = mainView.parentElement;
   const mainWindow = mainViewParent.parentElement;
 
+  const toggleButton = document.createElement("div");
+  toggleButton.classList.add("toggle-button");
+  toggleButton.addEventListener("click", async () => {
+    const buddyFeedStyle = document.getElementsByClassName("buddy-feed")[0];
+    buddyFeedStyle.style.display = buddyFeedStyle.style.display === "none" ? "block" : "none";
+  });
+  const toggleButtonImg = document.createElement("img");
+  toggleButtonImg.src = "https://i.imgur.com/6vi3ThF.png"; // FIXME Replace with icon in the assets folder.
+  toggleButtonImg.alt = "Toggle Friend Activity";
+  toggleButtonImg.style.cssText = "width: 32px; height: 32px; padding: 8px; vertical-align: middle;";
+  toggleButton.appendChild(toggleButtonImg);
+  const buttonArea = document.getElementsByTagName("footer")[0].children[0].children[2].children[0];
+  buttonArea.insertBefore(toggleButton, buttonArea.children[0]);
+  const newPlayingView = buttonArea.children[1];
+  newPlayingView.addEventListener("click", () => {
+    const buddyFeedStyle = document.getElementsByClassName("buddy-feed")[0];
+    buddyFeedStyle.style.display = "none";
+  });
+
+
   // If FriendActivity needs to toggle on.
   if (toggleOn) {
     const buddyFeed = document.createElement("div");
@@ -19,7 +39,7 @@ const toggleFriendActivity = async (toggleOn) => {
     mainWindow.insertBefore(buddyFeed, mainViewParent); // Insert buddyFeed before mainViewParent.
     mainViewParent.setAttribute("style", "grid-area: main-view/main-view/main-view;");
     render(<FriendActivity />, buddyFeed); // Inject FriendActivity into buddyFeed.
-    
+
   } else { // Else FriendActivity needs to toggle off.
     const buddyFeed = document.getElementsByClassName("buddy-feed")[0];
     if (buddyFeed) {
