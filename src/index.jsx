@@ -12,6 +12,13 @@ const toggleFriendActivity = async (toggleOn) => {
   const mainViewParent = mainView.parentElement;
   const mainWindow = mainViewParent.parentElement;
 
+  // check if the toggle button already exists. if multiple exist, remove all of them.
+  const toggleButtonExists = document.getElementsByClassName("toggle-button");
+  if (toggleButtonExists.length > 0) {
+    for (let i = 0; i < toggleButtonExists.length; i++) {
+      toggleButtonExists[i].remove();
+    }
+  }
   const toggleButton = document.createElement("div");
   toggleButton.classList.add("toggle-button");
   toggleButton.addEventListener("click", async () => {
